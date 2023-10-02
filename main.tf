@@ -28,7 +28,7 @@ locals {
 resource "aws_vpc" "this" {
   count = local.create_vpc ? 1 : 0
 
-  cidr_block          = var.use_ipam_pool && !var.ipv4_ipam_pool_id ? null : var.cidr
+  cidr_block          = var.use_ipam_pool && var.ipv4_ipam_pool_id!=null ? null : var.cidr
   ipv4_ipam_pool_id   = var.ipv4_ipam_pool_id
   ipv4_netmask_length = var.ipv4_netmask_length
 
