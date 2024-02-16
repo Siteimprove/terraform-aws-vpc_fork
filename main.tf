@@ -48,6 +48,11 @@ resource "aws_vpc" "this" {
     var.tags,
     var.vpc_tags,
   )
+  lifecycle {
+    ignore_changes = [
+      ipv6_netmask_length
+    ]
+  }
 }
 
 resource "aws_vpc_ipv4_cidr_block_association" "this" {
